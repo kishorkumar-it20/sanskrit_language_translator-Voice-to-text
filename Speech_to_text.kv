@@ -1,0 +1,215 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+
+<MainWindow>:
+    name:"main"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        Image:
+            source: "Background.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+    Label:
+        text:"The best way to predict your future is to create it.."
+        font_size:35
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.53,"center_y":0.95}
+    #Image:
+    #    source:"image.gif"
+    #    pos_hint:{"center_x":0.53,"center_y":0.83}
+    #    size_hint:.15,.15
+    #    keep_ratio:False
+    Label:
+        text:"Speech to text synthesis"
+        font_size:35
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.53,"center_y":0.73}
+    Button:
+        text:("Speech to text")
+        background_normal: 'normal2.png'
+        background_down:'down1.png'
+        border:30,30,30,30
+        font_size:25
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.53,"center_y":0.35}
+        size_hint:.25,.15
+        on_press:
+            app.root.current="second"
+            root.manager.transition.direction="left"
+
+    Button:
+        text:("Text to text")
+        background_normal: 'normal2.png'
+        background_down:'down1.png'
+        border:30,30,30,30
+        font_size:25
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.53,"center_y":0.15}
+        size_hint:.25,.15
+        on_press:
+            app.root.current = "third"
+            root.manager.transition.direction = "left"
+
+<SecondWindow>:
+    name:"second"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        Image:
+            source: "Background.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+
+
+    Label:
+        text:"Eager to hear your words!.."
+        font_size:35
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.53,"center_y":0.79}
+
+
+
+
+    #Image:
+    #    source:"gif.jpg"
+    #    pos_hint:{"center_x":0.53,"center_y":0.63}
+    #    size_hint:.45,.45
+    #Image:
+    #    source:'dp.gif'
+    #    pos_hint: {"center_x": 0.54,"center_y":0.90}
+
+
+    Button:
+        text: "Ready"
+        background_normal: 'normal2.png'
+        background_down:'down1.png'
+        border:30,30,30,30
+        font_size:25
+        font_name:"josefinSlab-italic.ttf"
+        size_hint:.25,.15
+        pos_hint: {"center_x": 0.53,"center_y":0.35}
+
+        #on_press = 'gif.gif'
+        on_press:
+            root.start()
+            app.root.current = "third"
+            #root.StopRec()
+            #root.ThirdWindow.proper()
+    Button:
+        text: "Back to the main screen"
+        background_normal: 'normal2.png'
+        background_down:'down1.png'
+        border:30,30,30,30
+        font_size:25
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.53,"center_y":0.15}
+        size_hint:.35,.15
+
+        #on_press = root.StopRec()
+        on_press:
+            app.root.current = "main"
+            root.manager.transition.direction = "left"
+
+<ThirdWindow>:
+    name:"third"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        Image:
+            source: "Background.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+
+    Label:
+        text:"Let's Translate.."
+        font_size:35
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.53,"center_y":0.90}
+
+    Label:
+        text:"From"
+        font_size:25
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.17,"center_y":0.84}
+    Label:
+        text:"To"
+        font_size:25
+        font_name:"josefinSlab-italic.ttf"
+        pos_hint: {"center_x": 0.78,"center_y":0.84}
+
+    TextInput:
+        id:field1
+        size: root.width,root.height
+        size_hint:0.3,0.4
+        pos_hint: {"center_x":0.21, "top":0.7}
+        font_size:22
+        font_name:"TELU"
+        #on_load : root.proper()
+
+    TextInput:
+        id:field2
+        size: root.width,root.height
+        size_hint:0.3,0.4
+        pos_hint: {"center_x":0.81, "top":0.7}
+        font_size:22
+        font_name:"SANSKK"
+        #on_load : root.proper()
+
+    Button:
+        text:"Translate"
+        background_normal: 'normal2.png'
+        background_down:'down1.png'
+        border:30,30,30,30
+        font_size:25
+        font_name:"josefinSlab-italic.ttf"
+        size_hint:.20,.12
+        pos_hint: {"center_x":0.51, "top":0.45}
+        on_press: root.translate()
+    Button:
+        text:"Back"
+        font_size:25
+        background_normal: 'normal2.png'
+        background_down:'down1.png'
+        border:30,30,30,30
+        font_name:"josefinSlab-italic.ttf"
+        size_hint:.20,.12
+        pos_hint: {"center_x":0.51, "top":0.20}
+        on_press:
+            app.root.current = "main"
+            root.manager.transition.direction = "left"
+    Button:
+        text:"word"
+        font_size:25
+        font_name:"josefinSlab-italic.ttf"
+        size_hint:.10,.12
+        pos_hint: {"center_x":0.12, "top":0.17}
+        on_press: root.proper()
+
+    Button:
+        size_hint: .10,.12
+        background_color: 0,0,0,0
+        pos_hint:{"center_x":0.24, "top":0.17}
+        on_press : root.eng_speak()
+
+
+    Button:
+        size_hint: .10,.12
+        background_color: 0,0,0,0
+        pos_hint:{"center_x":0.80, "top":0.17}
+        on_release: root.san_speak()
+
+
+
+
